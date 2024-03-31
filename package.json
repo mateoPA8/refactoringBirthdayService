@@ -4,10 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite serve ./src/sumador",
+    "dev": "vite serve ./src/carpaccio",
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
+    "test-watch": "jest --watch",
+    "test-cov": "jest --coverage",
     "cypress": "cypress open",
     "cypress-run": "cypress run"
   },
