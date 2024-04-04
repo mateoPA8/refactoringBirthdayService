@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite serve ./src/carpaccio",
+    "dev": "vite serve ./src/sumador",
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
