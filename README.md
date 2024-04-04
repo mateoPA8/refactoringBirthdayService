@@ -4,7 +4,7 @@ npm install
 
 ### Comandos de uso:
 
-##### Ejecutar web-sever local vite* (ver nota abajo):
+##### Ejecutar web-sever local vite:
 npm dev
 
 ##### Ejecutar pruebas de unidad solo una vez:
