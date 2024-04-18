@@ -11,7 +11,7 @@ npm dev
 npm run test
 
 ##### Ejecutar pruebas de unidad de forma continua --watch:
-npm test-watch
+npm run test-watch
 
 ##### Ejecutar pruebas de unidad incluyendo porcentaje de cobertura:
 npm run test-cov 
