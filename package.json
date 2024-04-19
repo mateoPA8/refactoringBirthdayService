@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite serve ./src/sumador",
+    "dev": "vite serve ./src/wargame",
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
