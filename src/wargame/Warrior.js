@@ -10,6 +10,9 @@ class Warrior {
     currentHealth() {
         return this.#health
     }
+    currentPower() {
+        return this.#power
+    }
     isAlive(){
         return this.#health >= 0
     }

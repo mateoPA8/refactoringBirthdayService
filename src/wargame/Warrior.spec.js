@@ -13,6 +13,10 @@ describe("Warrior Fights", () => {
         expect(big.currentHealth()).toEqual(100)
     })
 
+    it("New Warriors start with a specific power", () => {
+        expect(big.currentPower()).toEqual(99)
+    })
+
     it("Big  vs. Lil - First Strike", () => {
         big.attack(lil)
         expect(lil.currentHealth()).toEqual(1)
