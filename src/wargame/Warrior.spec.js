@@ -17,13 +17,13 @@ describe("Warrior Fights", () => {
         expect(big.currentPower()).toEqual(99)
     })
 
-    it("Big  vs. Lil - First Strike", () => {
+    it("Big vs. Little - First Strike", () => {
         big.attack(lil)
         expect(lil.currentHealth()).toEqual(1)
         expect(lil.isAlive()).toEqual(true)
     })
 
-    it("Big  vs. Lil - Second Strike", () => {
+    it("Big vs. Little - Second Strike", () => {
         big.attack(lil)
         expect(lil.isAlive()).toEqual(true)
         big.attack(lil)
