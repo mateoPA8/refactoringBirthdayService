@@ -2,6 +2,7 @@ import Warrior from "./Warrior"
 import Clan from "./Clan"
 import PowerClan from "./PowerClan"
 import HeightClan from "./HeightClan"
+import WeightClan from "./WeightClan"
 
 describe("Warrior Clans", () => {
 
@@ -27,6 +28,12 @@ describe("Warrior Clans", () => {
         let big = new Warrior(77, 160)
         let clan = new HeightClan()
         expect(clan.join(big)).toBe(false)
+    })
+
+    it("Weight Clan allows only weight <= 60", () => {
+        let thin = new Warrior(77, 180, 50)
+        let clan = new WeightClan()
+        expect(clan.join(thin)).toBeTruthy()
     })
 
 
