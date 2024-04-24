@@ -1,0 +1,26 @@
+name: csd-vanilla-js-CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci_to_main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test-cov
+      #- name: Run Cypress Tests
+      #  uses: cypress-io/github-action@v4
+      #  with:
+      #    start: npm start
+      #    wait-on: "http://localhost:1234"

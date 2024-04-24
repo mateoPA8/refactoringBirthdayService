@@ -1,0 +1,58 @@
+{
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "codespace",
+      "userUid": "1000",
+      "userGid": "1000"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20",
+      "additionalVersions": "18"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "ppa": "false"
+    }
+  },
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/common-utils",
+    "ghcr.io/devcontainers/features/git",
+    "ghcr.io/devcontainers/features/node",
+    "ghcr.io/devcontainers/features/sshd"
+  ],
+  "remoteUser": "codespace",
+  "containerUser": "codespace",
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [1234],
+
+  //install project dependecies and library xvfb for cypress
+  //"postCreateCommand": "npm install",
+  //** para actualizar e instalar dependencias para cypress descomentar sgte linea:
+  //"postCreateCommand": "sh .devcontainer/post-create.sh",
+  //"postCreateCommand": {
+  //    "install-dependecies": "npm install",
+  //    "update-system": "sudo apt update",
+  //    "install-xvfb": "sudo apt install xvfb"
+  //},
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "go.toolsManagement.checkForUpdates": "local",
+        "go.useLanguageServer": true
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "GitHub.vscode-pull-request-github",
+        "ms-vsliveshare.vsliveshare"
+      ]
+    }
+  }
+}
