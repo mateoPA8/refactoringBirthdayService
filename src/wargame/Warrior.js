@@ -1,11 +1,15 @@
 class Warrior {
     #power
     #health
+    #color
+    #language
     #height
     #weight
-    constructor(initialPower, height, weight) {
+    constructor(initialPower, color="none", language="none", height, weight) {
         this.#power = initialPower
         this.#health = 100
+        this.#color = color
+        this.#language = language
         this.#height = height
         this.#weight = weight
     }
@@ -17,6 +21,12 @@ class Warrior {
     currentPower() {
         return this.#power
     }
+    get color(){
+        return this.#color
+    }
+    get language(){
+        return this.#language
+    }
     currentHeight() {
         return this.#height
     }
@@ -24,7 +34,7 @@ class Warrior {
         return this.#weight
     }
     isAlive(){
-        return this.#health >= 0
+        return this.#health > 0
     }
 
     // Actions
