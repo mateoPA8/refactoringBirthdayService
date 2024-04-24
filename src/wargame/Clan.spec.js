@@ -37,19 +37,19 @@ describe("Warrior Clans", () => {
     })
 
     it("Height Clan allows only height >= 180", () => {
-        let big = new Warrior(77, 190)
+        let big = new Warrior(77, "white", "spanish", 190)
         let clan = new HeightClan()
         expect(clan.join(big)).toBeTruthy()
     })
 
     it("Height Clan does not allow height >= 160", () => {
-        let big = new Warrior(77, 160)
+        let big = new Warrior(77, "white", "spanish", 160)
         let clan = new HeightClan()
         expect(clan.join(big)).toBe(false)
     })
 
     it("Weight Clan allows only weight <= 60", () => {
-        let thin = new Warrior(77, 180, 50)
+        let thin = new Warrior(77, "white", "spanish", 180, 50)
         let clan = new WeightClan()
         expect(clan.join(thin)).toBeTruthy()
     })
