@@ -1,6 +1,7 @@
 import Warrior from "./Warrior"
 import Clan from "./Clan"
 import PowerClan from "./PowerClan"
+import HeightClan from "./HeightClan"
 
 describe("Warrior Clans", () => {
 
@@ -15,6 +16,19 @@ describe("Warrior Clans", () => {
         let clan = new PowerClan()
         expect(clan.join(grok)).toBeTruthy()
     })
+
+    it("Height Clan allows only height >= 180", () => {
+        let big = new Warrior(77, 190)
+        let clan = new HeightClan()
+        expect(clan.join(big)).toBeTruthy()
+    })
+
+    it("Height Clan does not allow height >= 160", () => {
+        let big = new Warrior(77, 160)
+        let clan = new HeightClan()
+        expect(clan.join(big)).toBe(false)
+    })
+
 
     
 })

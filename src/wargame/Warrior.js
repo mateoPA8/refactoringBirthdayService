@@ -1,9 +1,11 @@
 class Warrior {
     #power
     #health
-    constructor(initialPower) {
+    #height
+    constructor(initialPower, height) {
         this.#power = initialPower
         this.#health = 100
+        this.#height = height
     }
 
     // Getters
@@ -12,6 +14,9 @@ class Warrior {
     }
     currentPower() {
         return this.#power
+    }
+    currentHeight() {
+        return this.#height
     }
     isAlive(){
         return this.#health >= 0
