@@ -1,6 +1,5 @@
 import { OurDate } from "./domain/OurDate";
 import { InMemoryTransport } from "./infrastructure/__mocks__/InMemoryTransport";
-import { SmtpGreetingDelivery } from "./infrastructure/SmtpGreetingDelivery";
 import { BirthdayService } from "./services/BirthdayService";
 
 describe("Acceptance", () => {
@@ -12,18 +11,16 @@ describe("Acceptance", () => {
 
   beforeEach(() => {
     transport = new InMemoryTransport();
-
-    const messageDelivery = new SmtpGreetingDelivery(
-      SMTP_PORT,
-      SMTP_URL,
-      transport
-    );
-    birthdayService = new BirthdayService(messageDelivery);
+    birthdayService = new BirthdayService();
   });
 
   it("base scenario", () => {
     birthdayService.sendGreetings(
-      new OurDate("2008/10/08", "employee_data.txt")
+      new OurDate("2008/10/08"),
+      "employee_data.txt",
+      SMTP_URL,
+      SMTP_PORT,
+      transport
     );
 
     expect(transport.messagesSent.length).toEqual(1);
@@ -37,7 +34,11 @@ describe("Acceptance", () => {
 
   it("will not send emails when nobodys birthday", () => {
     birthdayService.sendGreetings(
-      new OurDate("2008/01/01", "employee_data.txt")
+      new OurDate("2008/01/01"),
+      "employee_data.txt",
+      SMTP_URL,
+      SMTP_PORT,
+      transport
     );
 
     expect(transport.messagesSent.length).toEqual(0);
@@ -45,7 +46,11 @@ describe("Acceptance", () => {
 
   it("uses correct transport", () => {
     birthdayService.sendGreetings(
-      new OurDate("2008/10/08", "employee_data.txt")
+      new OurDate("2008/10/08"),
+      "employee_data.txt",
+      SMTP_URL,
+      SMTP_PORT,
+      transport
     );
 
     const message = transport.messagesSent[0];

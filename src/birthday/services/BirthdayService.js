@@ -3,11 +3,9 @@ import path from "path";
 import { Employee } from "../domain/Employee";
 
 export class BirthdayService {
-  constructor(greetingDelivery) {
-    this.greetingDelivery = greetingDelivery;
-  }
+  constructor() {}
 
-  sendGreetings(ourDate, fileName = "employee_data.txt") {
+  sendGreetings(ourDate, fileName, smtpUrl, smtpPort, transport) {
     const data = fs.readFileSync(
       path.resolve(__dirname, `../${fileName}`),
       "UTF-8"
@@ -20,7 +18,15 @@ export class BirthdayService {
       .filter((employee) => employee.isBirthday(ourDate));
 
     employees.forEach((employee) => {
-      this.greetingDelivery.sendGreetingToEmployee(employee);
+      const message = {
+        host: smtpUrl,
+        port: smtpPort,
+        from: "sender@here.com",
+        to: [employee.getEmail()],
+        subject: "Happy Birthday!",
+        text: `Happy Birthday, dear ${employee.getFirstName()}!`,
+      };
+      transport.sendMail(message);
     });
   }
 
