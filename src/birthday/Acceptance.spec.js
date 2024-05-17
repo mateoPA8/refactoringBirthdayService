@@ -1,6 +1,6 @@
-import { OurDate } from "./domain/OurDate";
-import { InMemoryTransport } from "./infrastructure/__mocks__/InMemoryTransport";
-import { BirthdayService } from "./services/BirthdayService";
+import { OurDate } from "./OurDate";
+import { InMemoryTransport } from "./InMemoryTransport";
+import { BirthdayService } from "./BirthdayService";
 
 describe("Acceptance", () => {
   const SMTP_PORT = 25;

@@ -1,7 +1,6 @@
-import { OurDate } from './OurDate';
+import { OurDate } from "./OurDate";
 
 export class Employee {
-  
   constructor(firstName, lastName, birthDate, email) {
     this._firstName = firstName;
     this._lastName = lastName;

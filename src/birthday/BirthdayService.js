@@ -1,15 +1,21 @@
 import fs from "fs";
 import path from "path";
-import { Employee } from "../domain/Employee";
+import { Employee } from "./Employee";
 
 export class BirthdayService {
   constructor() {}
 
   sendGreetings(ourDate, fileName, smtpUrl, smtpPort, transport) {
-    const data = fs.readFileSync(
+    /*const data = fs.readFileSync(
       path.resolve(__dirname, `../${fileName}`),
       "UTF-8"
+    );*/
+    console.log("Directorio actual:...", __dirname);
+    const data = fs.readFileSync(
+      path.resolve(__dirname, `${fileName}`),
+      "UTF-8"
     );
+
     // split the contents by new line
     const lines = data.split(/\r?\n/);
     lines.shift();
