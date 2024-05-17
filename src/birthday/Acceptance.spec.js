@@ -22,6 +22,7 @@ describe("Acceptance", () => {
     const employeesRepository = new FileEmployeesRepository(FILENAME);
     birthdayService = new BirthdayService(messageDelivery, employeesRepository);
   });
+
   it("base scenario", () => {
     birthdayService.sendGreetings(new OurDate("2008/10/08"));
 

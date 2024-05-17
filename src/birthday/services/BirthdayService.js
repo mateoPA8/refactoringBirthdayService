@@ -1,5 +1,3 @@
-import { OurDate } from '../domain/OurDate';
-
 export class BirthdayService {
   constructor(greetingDelivery, employeesRepository) {
     this.greetingDelivery = greetingDelivery;
@@ -9,7 +7,7 @@ export class BirthdayService {
   sendGreetings(ourDate) {
     const employees = this.employeesRepository.getEmployeesByBirthDate(ourDate);
 
-    employees.forEach(employee => {
+    employees.forEach((employee) => {
       this.greetingDelivery.sendGreetingToEmployee(employee);
     });
   }

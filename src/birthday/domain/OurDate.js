@@ -1,24 +1,26 @@
 export class OurDate {
+  constructor(yyyyMMdd) {
+    this._date = new Date(yyyyMMdd);
+  }
 
-    //private _date: Date
+  getDay() {
+    return this._date.getDate();
+  }
 
-    constructor(yyyyMMdd) {
-        this._date = new Date(yyyyMMdd)
-    }
+  getMonth() {
+    return 1 + this._date.getMonth();
+  }
 
-    getDay() {
-        return this._date.getDate()
-    }
+  isSameDay(anotherDate) {
+    return (
+      anotherDate.getDay() === this.getDay() &&
+      anotherDate.getMonth() === this.getMonth()
+    );
+  }
 
-    getMonth() {
-        return 1 + this._date.getMonth()
-    }
-
-    isSameDay(anotherDate) {
-        return anotherDate.getDay() === this.getDay() && anotherDate.getMonth() === this.getMonth()
-    }
-
-    equals(obj) {
-        return obj instanceof OurDate && obj._date.getTime() === this._date.getTime()
-    }
+  equals(obj) {
+    return (
+      obj instanceof OurDate && obj._date.getTime() === this._date.getTime()
+    );
+  }
 }
