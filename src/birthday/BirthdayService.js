@@ -1,9 +1,10 @@
-import fs from "fs";
-import path from "path";
+import { EmployeesRepository } from "./EmployeesRepository";
 import { Employee } from "./Employee";
 
 export class BirthdayService {
-  constructor() {}
+  constructor() {
+    this.employeesRepository = new EmployeesRepository();
+  }
 
   sendGreetings(ourDate, fileName, smtpUrl, smtpPort, transport) {
     const employees = this.getEmployeesByBirthDate(ourDate, fileName);
@@ -22,30 +23,7 @@ export class BirthdayService {
   }
 
   getEmployeesByBirthDate(ourDate, fileName) {
-    const data = fs.readFileSync(
-      path.resolve(__dirname, `${fileName}`),
-      "UTF-8"
-    );
-
-    // split the contents by new line
-    const lines = data.split(/\r?\n/);
-    lines.shift();
-
-    const employees = lines
-      .map((line) => this.createEmployeeFromLine(line))
-      .filter((employee) => employee.isBirthday(ourDate));
-    
-    return employees;
-  }
-
-  createEmployeeFromLine(line) {
-    const employeeData = line.split(", ");
-    const employee = new Employee(
-      employeeData[1],
-      employeeData[0],
-      employeeData[2],
-      employeeData[3]
-    );
-    return employee;
+    const employees = this.employeesRepository.getEmployeesFromFile(fileName);
+    return employees.filter((employee) => employee.isBirthday(ourDate));
   }
 }
