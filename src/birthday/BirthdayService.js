@@ -7,7 +7,7 @@ export class BirthdayService {
   }
 
   sendGreetings(ourDate, fileName, smtpUrl, smtpPort, transport) {
-    const employees = this.getEmployeesByBirthDate(ourDate, fileName);
+    const employees = this.employeesRepository.getEmployeesByBirthDate(ourDate, fileName);
 
     employees.forEach((employee) => {
       const message = {
@@ -20,10 +20,5 @@ export class BirthdayService {
       };
       transport.sendMail(message);
     });
-  }
-
-  getEmployeesByBirthDate(ourDate, fileName) {
-    const employees = this.employeesRepository.getEmployeesFromFile(fileName);
-    return employees.filter((employee) => employee.isBirthday(ourDate));
   }
 }

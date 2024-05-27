@@ -10,11 +10,8 @@ export class EmployeesRepository {
       path.resolve(__dirname, `${fileName}`),
       "UTF-8"
     );
-
-    // split the contents by new line
     const lines = data.split(/\r?\n/);
     lines.shift();
-
     const employees = lines.map((line) => this.createEmployeeFromLine(line));
     return employees;
   }
@@ -28,5 +25,10 @@ export class EmployeesRepository {
       employeeData[3]
     );
     return employee;
+  }
+
+  getEmployeesByBirthDate(ourDate, fileName) {
+    const employees = this.getEmployeesFromFile(fileName);
+    return employees.filter((employee) => employee.isBirthday(ourDate));
   }
 }
